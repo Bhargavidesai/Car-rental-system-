@@ -1,0 +1,140 @@
+{% extends 'car/basic.html'%}
+
+{% load static %}
+
+{%block body%}
+<!--<section class="breadcrumbs1">-->
+
+
+<!--          <ol>-->
+<!--            <li><a href="index.html">Home</a></li>-->
+<!--            <li>Inner Page</li>-->
+<!--          </ol>-->
+
+<!--    </section>-->
+<br>
+<br>
+<style>
+    section {
+    padding: 0 0;
+}
+.none{display:None;
+}
+</style>
+
+{% for i in tracker %}
+<!--  {{forloop.counter}}-->
+  <div class="container">
+      <section class="breadcrumbs">
+<!--      <div class="container">-->
+
+        <div>
+          <h2 class="text-center">{{i.car}}</h2>
+<!--          <ol>-->
+<!--            <li><a href="index.html">Home</a></li>-->
+<!--            <li>Inner Page</li>-->
+<!--          </ol>-->
+        </div>
+
+<!--      </div>-->
+    </section><!-- End Breadcrumbs Section -->
+      <form method="post" action="{% url 'co' %}" class="row g-3">
+     {% csrf_token %}
+  <div class="col-md-3">
+    <label for="validationServer01" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationServer01" value="{{user.first_name}}" readonly>
+  </div>
+  <div class="col-md-3">
+    <label for="validationServer02" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="validationServer02" value="{{ user.last_name }}" readonly>
+  </div>
+      <div class="col-md-3">
+    <label for="validationServer02" class="form-label">Email</label>
+    <input type="email" class="form-control" id="validationServer07" value="{{ user.email }}" readonly>
+  </div>
+  <div class="col-md-3">
+    <label for="validationServerUsername" class="form-label">Username</label>
+    <div class="input-group has-validation">
+      <span class="input-group-text" id="inputGroupPrepend3">@</span>
+      <input value="{{user}}" type="text" class="form-control" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" readonly>
+    </div>
+  </div>
+
+
+  <div class="col-md-4">
+    <label for="validationDefault01" class="form-label">Car name</label>
+    <input type="text" class="form-control" id="validationDefault01" value="{{i.car}}" readonly>
+  </div>
+  <div class="col-md-4">
+    <label for="validationDefault02" class="form-label">Order ID</label>
+    <input name="car_id" type="text" class="form-control" id="validationDefault02" value="{{i.order.order_id}}" readonly>
+  </div>
+   <div class="col-md-4">
+    <label for="validationDefault8" class="form-label">Total Amount</label>
+    <input name="price" type="number" class="form-control" id="validationDefault8" readonly value="{{i.order.total_amount}}">
+  </div>
+
+
+
+  <div class="col-md-3">
+    <label for="validationDefault04" class="form-label">State</label>
+    <input value="{{i.order.state}}" name="state" class="form-control" id="validationDefault04" readonly>
+
+  </div>
+     <div class="col-md-3">
+    <label for="validationDefault02" class="form-label">City</label>
+    <input value="{{i.order.city}}" name="city" type="text" class="form-control" id="validationDefault9" readonly>
+
+  </div>
+  <div class="col-md-3">
+    <label for="validationDefault05" class="form-label">Zip</label>
+    <input value="{{i.order.zip_code}}" name="zip_code" type="text" class="form-control" id="validationDefault06" readonly>
+  </div>
+
+       <div class="col-md-3">
+    <label for="validationDefault05" class="form-label">Address</label>
+    <input value="{{i.order.address}}" name="address" type="text" class="form-control" id="validationDefault05" readonly>
+  </div>
+
+   <div class="col-md-6">
+    <label for="validationDefault11" class="form-label">Mode of delivery</label>
+    <input value="{{i.order.mode_of_delivery}}" name="mode_of_delivery" class="form-control" id="validationDefault11" readonly>
+  </div>
+
+       <div class="col-md-6">
+    <label for="validationDefault10" class="form-label">Phone number</label>
+    <input value="{{i.order.number}}" name="number" type="number" class="form-control" id="validationDefault10" readonly>
+  </div>
+          <div class="col-md-6">
+    <label for="validationDefault04" class="form-label">Current location</label>
+    <input value="{{i.location}}" name="mode_of_delivery" class="form-control" id="validationDefault08" readonly>
+  </div>
+
+       <div class="col-md-6">
+    <label for="validationDefault05" class="form-label">Message</label>
+    <input value="{{i.message}}" name="number" type="text" class="form-control" id="validationDefault09" readonly>
+  </div>
+
+
+
+  <div class="col-12 text-center">
+    <button class="btn btn-danger" type="submit">Cancel order</button>
+  </div>
+</form> </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+
+
+{% endfor %}
+<br>
+<br>
+{% endblock %}
+

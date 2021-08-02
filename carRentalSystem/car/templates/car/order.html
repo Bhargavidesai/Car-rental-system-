@@ -1,0 +1,169 @@
+{% extends 'car/basic.html'%}
+
+{% load static %}
+
+{%block body%}
+<br>
+<br>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Order</title>
+  </head>
+  <body>
+  <div class="container"><form method="post" action="{% url 'orderCar' %}" class="row g-3">
+     {% csrf_token %}
+  <div class="col-md-3">
+    <label for="validationServer01" class="form-label">First name</label>
+    <input type="text" class="form-control is-valid" id="validationServer01" value="{{user.first_name}}" readonly>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationServer02" class="form-label">Last name</label>
+    <input type="text" class="form-control is-valid" id="validationServer02" value="{{ user.last_name }}" readonly>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+      <div class="col-md-3">
+    <label for="validationServer02" class="form-label">Email</label>
+    <input type="email" class="form-control is-valid" id="validationServer07" value="{{ user.email }}" readonly>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationServerUsername" class="form-label">Username</label>
+    <div class="input-group has-validation">
+      <span class="input-group-text" id="inputGroupPrepend3">@</span>
+      <input value="{{user}}" type="text" class="form-control is-valid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" readonly>
+      <div id="validationServerUsernameFeedback" class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-3">
+    <label for="validationDefault01" class="form-label">Car name</label>
+    <input type="text" class="form-control is-valid" id="validationDefault01" value="{{car}}" readonly>
+      <div id="validationServerUsernameFeedback1" class="valid-feedback">
+        Looks good!
+      </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationDefault02" class="form-label">Order ID</label>
+    <input name="car_id" type="text" class="form-control is-valid" id="validationDefault02" value="{{car.unique_id}}" readonly>
+      <div id="validationServerUsernameFeedback2" class="valid-feedback">
+        Looks good!
+      </div>
+  </div>
+   <div class="col-md-3">
+    <label for="validationDefault8" class="form-label">Price/Day</label>
+    <input name="price" type="number" class="form-control is-valid" id="validationDefault8" readonly value="{{car.price}}">
+      <div id="validationServerUsernameFeedback8" class="valid-feedback">
+        Looks good!
+      </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationDefault03"  class="form-label">Number of days</label>
+    <input name="no_of_days" type="number" min="1" max="10" class="form-control is-valid" id="validationDefault03" required value="1">
+      <div id="validationServerUsernameFeedback3" class="valid-feedback">
+        Looks good!
+      </div>
+  </div>
+
+
+  <div class="col-md-3">
+    <label for="validationDefault04" class="form-label">State</label>
+    <select name="state" class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+
+          <option>Andhra Pradesh</option>
+          <option>Arunachal Pradesh</option>
+          <option>Assam</option>
+          <option>Bihar</option>
+          <option>Chhattisgarh</option>
+          <option>Goa</option>
+          <option>Gujarat</option>
+          <option>Haryana</option>
+          <option>Himachal Pradesh</option>
+          <option>Jammu and kashmir</option>
+          <option>Ladakh</option>
+          <option>Jharkhand</option>
+          <option>Karnataka</option>
+          <option>Kerala</option>
+        <option>Manipur</option>
+        <option>Meghalaya</option>
+        <option>Mizoram</option>
+        <option>Nagaland</option>
+        <option>Odisha</option>
+        <option>Rajasthan</option>
+        <option>Sikkim</option>
+        <option>Tamil Nadu</option>
+          <option>Telangana</option>
+        <option>Tripura</option>
+        <option>Uttarakhand</option>
+        <option>Uttar Pradesh</option>
+        <option>West Bengal</option>
+    </select>
+  </div>
+     <div class="col-md-3">
+    <label for="validationDefault02" class="form-label">City</label>
+    <input name="city" type="text" class="form-control" id="validationDefault9" required>
+
+  </div>
+  <div class="col-md-3">
+    <label for="validationDefault05" class="form-label">Zip</label>
+    <input name="zip_code" type="text" pattern='^\d{6}$'class="form-control" id="validationDefault06" required>
+  </div>
+
+       <div class="col-md-3">
+    <label for="validationDefault05" class="form-label">Address</label>
+    <input name="address" type="text" class="form-control" id="validationDefault05" required>
+  </div>
+
+   <div class="col-md-6">
+    <label for="validationDefault04" class="form-label">Mode of delivery</label>
+    <select name="mode_of_delivery" class="form-select" id="validationDefault08" required>
+<!--      <option selected disabled value="">Choose...</option>-->
+      <option>Cash On Delivery</option>
+    </select>
+  </div>
+
+       <div class="col-md-6">
+    <label for="validationDefault05" class="form-label">Phone number</label>
+    <input name="number" pattern="^[6-9]\d{9}$" class="form-control" id="validationDefault09" required>
+  </div>
+
+
+
+  <div class="col-12 text-center">
+    <button class="btn btn-warning" type="submit">Book now</button>
+  </div>
+
+
+</form> </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+
+  </body>
+  <br>
+  <br>
+{% endblock %}
+

@@ -1,0 +1,31 @@
+{% extends 'car/basic.html' %}
+{% block body %}
+<div class="container">
+<form action="{% url 'subreset' %}" method="post">
+  {% csrf_token %}
+  <br>
+  <div class="row">
+    <div class="col">
+      <input type="text" name='username' required class="form-control" placeholder="Username">
+    </div>
+    <div class="col">
+      <input type="email" name="email" required class="form-control" placeholder="Email">
+    </div>
+  </div>
+  <br>
+    <div class="row">
+    <div class="col">
+      <input type="password" name="password1" required class="form-control" placeholder="Enter New Password">
+    </div>
+    <div class="col">
+      <input type="password" name="password2" required class="form-control" placeholder="Confirm Password">
+    </div>
+  </div>
+  <br>
+  <div class="text-center">
+    <button type="submit" class="btn btn-warning">Reset Password</button>
+  </div>
+</form>
+</div>
+<br>
+{% endblock %}
